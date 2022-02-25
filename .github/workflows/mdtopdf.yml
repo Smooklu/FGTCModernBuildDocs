@@ -1,7 +1,6 @@
 name: Publish Document to Release
 
 on:
-  push:
   release:
     types: [published]
 
@@ -30,5 +29,5 @@ jobs:
         with:
           upload_url: ${{ steps.release.outputs.upload_url }}
           asset_path: ${{ steps.publish-document.outputs.pdf }}
-          asset_name: '${{ steps.release.outputs.name }}.pdf'
+          asset_name: '${{ steps.release.outputs.name }} ${{ steps.release.outputs.tag_name }}.pdf'
           asset_content_type: application/pdf
